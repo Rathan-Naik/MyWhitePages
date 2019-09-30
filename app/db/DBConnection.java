@@ -70,7 +70,7 @@ public class DBConnection {
 		} catch (MySQLIntegrityConstraintViolationException me){
 			throw new  UserRegisterdException();
 		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
+			System.out.println("Failed to add user "+ex.getMessage());
 		} 
 	}
 

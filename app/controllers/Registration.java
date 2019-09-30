@@ -26,7 +26,7 @@ public class Registration extends Controller {
 		String fname = params.get("fname");
 		String lName = params.get("lname");
 		String password = params.get("psw");
-		String email = params.get("email");	
+		String email = params.get("email").trim();	
 
 		password = MD5Util.getHashValue(password);
 		user = new User(fname,lName,email,password);
