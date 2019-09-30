@@ -205,7 +205,7 @@ public class DBConnection {
 	public static void insertPhoneNumber (List<PhoneNumber> numbers) throws UserRegisterdException{
 
 
-		String SQL = "INSERT INTO PhoneNumbers (profileid,phonenumber,Category) VALUES (?,?,?)";
+		String SQL = "INSERT INTO phonenumbers (profileid,phonenumber,Category) VALUES (?,?,?)";
 		String values =  ",(?,?,?) ";
 
 		try
