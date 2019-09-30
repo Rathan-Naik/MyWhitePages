@@ -4,7 +4,7 @@
 
 
 <h2> Tech Stack</h2>
-<li> DataBase Used : MYSQL </li>
+<li> DataBase : MYSQL </li>
 <li> Java Version : 1.7  </li>
 <li> Play Framework Version : 1.2.4</li>
 <li> Front End : HTML/CSS, JQUERY</li>
