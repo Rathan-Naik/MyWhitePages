@@ -4,6 +4,7 @@ Just like WhitePages, just for personal use.
 
 
 <h1> ER Diagram for DB </h1>
+
 ![alt text](https://raw.githubusercontent.com/Rathan-Naik/mywhitepages/master/ERD.png)
 
 
