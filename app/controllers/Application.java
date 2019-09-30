@@ -28,7 +28,7 @@ public class Application extends Controller {
 			renderArgs.put("ErrorInfo", "Please Login");
 			render("main.html");
 		}
-    	render("CreateContact/createContact.html");
+    	render("CreateContact/createcontact.html");
     }
     
     public static void viewContacts(){
