@@ -6,9 +6,9 @@ import java.util.*;
 
 import org.apache.commons.mail.EmailAttachment;
 
-import com.mywhitepages.models.EmailUser;
-import com.mywhitepages.models.User;
-import com.mywhitepages.models.UserProfile;
+import models.EmailUser;
+import models.User;
+import models.UserProfile;
  
 public class Emailer extends Mailer {
  

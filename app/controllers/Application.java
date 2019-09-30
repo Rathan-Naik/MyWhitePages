@@ -1,4 +1,4 @@
-package com.mywhitepages.controllers;
+package controllers;
 
 import play.*;
 import play.mvc.*;

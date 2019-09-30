@@ -1,4 +1,4 @@
-package com.mywhitepages.controllers;
+package controllers;
 
 import com.mywhitepages.notifiers.Emailer;
 import com.mywhitepages.scheduledtasks.ScheduledTaskMocker;

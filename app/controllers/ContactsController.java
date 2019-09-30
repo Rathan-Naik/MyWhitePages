@@ -1,4 +1,4 @@
-package com.mywhitepages.controllers;
+package controllers;
 
 import play.*;
 import play.db.DB;
@@ -9,12 +9,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mywhitepages.models.Address;
-import com.mywhitepages.models.PhoneNumber;
-import com.mywhitepages.models.UserProfile;
 import com.mywhitepages.storagemanager.DBConnection;
 import com.mywhitepages.storagemanager.UserRegisterdException;
 import com.mywhitepages.util.SessionController;
+
+import models.Address;
+import models.PhoneNumber;
+import models.UserProfile;
 
 import java.sql.Connection;
 import java.sql.Date;

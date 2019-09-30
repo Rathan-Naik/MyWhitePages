@@ -10,14 +10,21 @@
 		var wrapper   		= "#addanother";
 		var add_button      = "#addanother";
 		
-		
 		var x = 1; //initlal text box count
 		$(add_button).click(function(e){ 
 			
 			e.preventDefault();
 			if(x < max_fields){ //max input box allowed
 				x++; //text box increment
-				$(wrapper).before('<br/><label for="phNo"><b>Phone Number '+x+'</b> </label><input type="text" placeholder="Phone Number" name="phNo" id="phNo">  <label for="phNo"><b>Category</b></label><input type="text" placeholder="Category" name="catg" id="catg"><br/>'); 
+				$(wrapper).before('<br/><label for="phNo"><b>Phone Number</b>'+x
+					+'</label><input type="text" placeholder="Phone Number" name="phNo" id="phNo"> </input>'
+					+'<label><b>Category</b></label> '
+					+'<select name="catg" id="catg"> '
+						+'<option value="Business">Business</option>'
+					    +'<option value="Home">Home</option>'
+					    +'<option value="Mobile">Mobile</option>'
+					    +'<option value="Other">Other</option>'
+				   +'</select><br/>'); 
 
 			}
 		});
@@ -120,19 +127,25 @@
     <input type="text" placeholder="city" name="city">
     <br/>  <br/>
     
-    <label for="state"><b>state</b></label>
+    <label for="state"><b>State</b></label>
     <input type="text" placeholder="state" name="state">
     <br/>  <br/>
     
     <label for="country"><b>Country</b></label>
-    <input type="text" placeholder="country" name="country">
+    <input type="select" placeholder="country" name="country">
     <br/>  <br/>
     
     <br/><br/>
     <label for="phNo"><b>Phone Number 1</b></label>
     <input type="text" placeholder="Phone Number" name="phNo" id="phNo">
     <label for="phNo"><b>Category</b></label>
-    <input type="text" placeholder="Category" name="catg" id="catg">
+	 <select name="catg" id="catg">
+	    <option value="Business">Business</option>
+	    <option value="Home">Home</option>
+	    <option value="Mobile">Mobile</option>
+	    <option value="Other">Other</option>
+	  </select>
+  
     <br/>
     <button class="addanother" id="addanother">AddAnother</button>
     <br/>

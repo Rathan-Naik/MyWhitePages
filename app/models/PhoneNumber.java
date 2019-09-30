@@ -1,4 +1,4 @@
-package com.mywhitepages.models;
+package models;
 
 public class PhoneNumber {
 	

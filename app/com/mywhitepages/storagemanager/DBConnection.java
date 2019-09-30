@@ -6,10 +6,11 @@ import java.util.List;
 
 import com.jamonapi.utils.Logger;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-import com.mywhitepages.models.Address;
-import com.mywhitepages.models.PhoneNumber;
-import com.mywhitepages.models.User;
-import com.mywhitepages.models.UserProfile;
+
+import models.Address;
+import models.PhoneNumber;
+import models.User;
+import models.UserProfile;
 
 /**
  * This Class is intended to DB related activities. This class has necessary

@@ -1,4 +1,4 @@
-package com.mywhitepages.controllers;
+package controllers;
 
 import play.*;
 import play.db.DB;
@@ -7,10 +7,11 @@ import play.mvc.Scope.Session;
 
 import java.util.*;
 
-import com.mywhitepages.models.User;
 import com.mywhitepages.storagemanager.DBConnection;
 import com.mywhitepages.storagemanager.UserRegisterdException;
 import com.mywhitepages.util.MD5Util;
+
+import models.User;
 
 import java.sql.Statement;
 import java.sql.Connection;

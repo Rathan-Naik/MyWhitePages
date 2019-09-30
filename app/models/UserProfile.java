@@ -1,4 +1,4 @@
-package com.mywhitepages.models;
+package models;
 
 import java.sql.Date;
 import java.sql.Timestamp;

@@ -1,11 +1,11 @@
 package com.mywhitepages.scheduledtasks;
 import java.util.List;
 
-import com.mywhitepages.models.User;
-import com.mywhitepages.models.UserProfile;
 import com.mywhitepages.notifiers.Emailer;
 import com.mywhitepages.storagemanager.DBConnection;
 
+import models.User;
+import models.UserProfile;
 import play.jobs.*;
 
 public class ScheduledTaskMocker extends Job {
