@@ -1,16 +1,14 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dynamic Table</title>
-    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Your Contacts</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script >
+    	#{if (profiles!=0)}
         $(document).ready(function(){
-         
-              var table_body = '<table border="1"><th >FirstName</th><th>LastName</th></tr>';
-
+              var table_body = '<table border="1"><th style="padding-left:15px;padding-right:15px;"> FirstName </th><th style="padding-left:15px;padding-right:15px;"> LastName </th></tr>';
               #{list items:profiles, as:'profile' }
 
               		table_body+='<tr id="${profile.profileid}">';
@@ -26,7 +24,7 @@
                     table_body +='</td>';
                     
                     table_body +='<td>';
-                    table_body += '<button onclick="viewProfile(${profile.profileid})">View Details</button>';
+                    table_body += '<button onclick="viewProfile(${profile.profileid})" class="btn btn-info" ">View Details</button>';
                     table_body +='</td>'
                     
                     table_body +='</td>';
@@ -38,10 +36,13 @@
             table_body+='</table>';
             $('#tableDiv').html(table_body);
             });
+    	#{/if}
         
         
         
         function viewProfile(id){
+        	
+        	$("#infodiv").css("border","2px solid black");
         	
         	$("#data").empty();
         	var ajaxReq = $.ajax('/viewProfile?profileid='+id, {
@@ -97,10 +98,17 @@
     	  float: left;
     	}
     
-	#infodiv {
-		float: left;
-	  margin-left: 250px;
-	}
+    	#infodiv {
+	    	float: left;
+	    	margin-left: 300px;
+	    	margin-top: 100px;
+	    	padding-left:50px;
+	    	padding-right:50px;
+    	}
+    	
+    	td {
+    		 text-align: center;
+    	}
 </style>
     
 </head>
@@ -115,7 +123,6 @@
 
 
 <div style="margin-top: 50px; margin-left: 250px">
-
     <div id="tableDiv" style="margin-top: 40px">
        No Contacts added yet 
     </div>

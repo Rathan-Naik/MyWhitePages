@@ -128,7 +128,11 @@ public class ContactsController extends Controller {
 		int currentUserId = Integer.parseInt(session.get("id"));
 		List<UserProfile> profiles = DBConnection.viewContactProfiles(currentUserId, "first_name", "asc");
 
-		renderArgs.put("profiles", profiles);
+		if(profiles.isEmpty()){
+			renderArgs.put("profiles", 0);
+		} else{
+			renderArgs.put("profiles", profiles);
+		}
 		render("ViewContacts/viewcontacts.html");
 	}
 

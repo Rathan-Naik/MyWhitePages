@@ -37,9 +37,8 @@ public class DBConnection {
 				e.printStackTrace();
 			}
 			connection = DriverManager.getConnection(DBURL, DB_USERNAME, DB_PASSWORD);
-			System.out.println("Printing connection object " + connection);
 		} catch (Exception e) {
-			Logger.logInfo("Failed to Establis connection with DB");
+			Logger.logInfo("Failed to Establish connection with DB");
 		}
 		return connection;
 	}
