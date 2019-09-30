@@ -79,7 +79,7 @@ public class DBConnection {
 
 		User user = null;
 
-		String SQL = "SELECT * from users where email=?";
+		String SQL = "SELECT * from Users where email=?";
 		Connection conn = createConnection();
 		PreparedStatement pstmt =null;
 
@@ -121,7 +121,7 @@ public class DBConnection {
 
 		User user = null;
 
-		String SQL = "SELECT * from users where userid=?";
+		String SQL = "SELECT * from Users where userid=?";
 		Connection conn = createConnection();
 		PreparedStatement pstmt =null;
 
