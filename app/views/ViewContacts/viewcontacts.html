@@ -26,6 +26,10 @@
                     table_body +='<td>';
                     table_body += '<button onclick="viewProfile(${profile.profileid})" class="btn btn-info" ">View Details</button>';
                     table_body +='</td>'
+                    		
+                    table_body +='<td>';
+                    table_body += '<button onclick="deleteProfile(${profile.profileid})" class="btn btn-info" ">Delete Profile</button>';
+                    table_body +='</td>'
                     
                     table_body +='</td>';
                     
@@ -38,12 +42,29 @@
             });
     	#{/if}
         
-        
+    	
+    	function deleteProfile(id){
+    		
+        	$("#data").empty();
+        	var ajaxReq = $.ajax('/deleteProfile?profileid='+id, {
+        		dataType: 'text',
+        		timeout: 500
+        	});
+
+        	ajaxReq.done(function (data, status, jqXhr) {
+        		alert("Delete Successfull");
+        		$("#infodiv").css("border","none");
+        		$('#'+id).remove();
+        	})
+
+        	ajaxReq.fail(function (jqXhr, textStatus, errorMessage) {
+        		$('p').append('Error: ' + errorMessage);
+        	})
+        }
         
         function viewProfile(id){
         	
         	$("#infodiv").css("border","2px solid black");
-        	
         	$("#data").empty();
         	var ajaxReq = $.ajax('/viewProfile?profileid='+id, {
         		dataType: 'json',
@@ -100,7 +121,7 @@
     
     	#infodiv {
 	    	float: left;
-	    	margin-left: 300px;
+	    	margin-left: 400px;
 	    	margin-top: 100px;
 	    	padding-left:50px;
 	    	padding-right:50px;

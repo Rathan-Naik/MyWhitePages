@@ -53,7 +53,13 @@ public class ContactsController extends Controller {
 		String fname = params.get("fname");
 		String lName = params.get("lname");
 		String email = params.get("email");	
-		Date dob = Date.valueOf(params.get("dob")); 
+		
+		Date dob = null;
+		try{
+			Date.valueOf(params.get("dob")); 
+		} catch(Exception e){
+			Logger.info("Illegeal DOB provided");
+		}
 
 		int wishPrior=0;
 		if(params.get("wish")!=null && !params.get("wish").trim().isEmpty())
@@ -169,6 +175,27 @@ public class ContactsController extends Controller {
 
 
 		render("ViewContacts/fetchprofile.html");
+
+	}
+	
+	/**
+	 * Delete the specific profile details identified by profileid
+	 *
+	 * @throws SQLException the SQL exception
+	 */
+	public static void deleteProfile(){
+
+		if(!SessionController.isLoggedIn(session)){
+			renderArgs.put("ErrorInfo", "Please Login");
+			render("main.html");
+		}
+		int currentUserId = Integer.parseInt(session.get("id"));
+		currentUserId=1;
+
+		int profileId = Integer.parseInt(params.get("profileid"));
+		DBConnection.deleteProfile(profileId);
+
+		render("ViewContacts/deleteprofile.html");
 
 	}
 

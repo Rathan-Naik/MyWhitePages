@@ -17,6 +17,7 @@ GET     /public/                                staticDir:public
 GET     /register                                Application.register
 GET     /createContact                           Application.create
 GET     /viewContacts                            ContactsController.viewContacts
+GET     /deleteProfile                            ContactsController.deleteProfile
 GET     /sendMail                            	MailerController.sendMail
 GET     /login                            		Application.index
 GET 	/viewProfile							ContactsController.viewProfile

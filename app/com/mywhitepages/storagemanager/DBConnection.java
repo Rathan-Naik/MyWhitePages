@@ -477,4 +477,45 @@ public class DBConnection {
 			Logger.log("Exception occured while closing the connection" + se);
 		}
 	}
+
+	public static  void deleteProfile(int profileId) {
+
+		/** First delete all phone numbers associated with the profile */
+		String SQL = "delete from phonenumbers where profileid=?";
+
+		Connection conn = createConnection();
+		PreparedStatement pstmt = null;
+
+		List<PhoneNumber> phoneNumbers = new ArrayList<>();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, profileId);
+
+			int rs = pstmt.executeUpdate();
+
+			Logger.logInfo(rs+" phone numbers associated with profileid-"+profileId+" Deleted");
+		} catch (Exception e) {
+			Logger.log("Failed to delete phone numbers associated with profileid-"+profileId+e);
+		} finally {
+			closeDbResources(conn, pstmt);
+		}
+		
+		SQL = "delete from contactsProfile where profileid=?";
+		conn = createConnection();
+		pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, profileId);
+
+			int rs = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			Logger.log("Failed to profile associated with profileid-"+profileId+e);
+		} finally {
+			closeDbResources(conn, pstmt);
+		}
+
+
+
+	}
 }
