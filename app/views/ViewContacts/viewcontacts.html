@@ -1,0 +1,107 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Table</title>
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script >
+        $(document).ready(function(){
+         
+              var table_body = '<table border="1"><th >FirstName</th><th>LastName</th></tr>';
+
+              #{list items:profiles, as:'profile' }
+
+              		table_body+='<tr id="${profile.profileid}">';
+
+              		
+                    table_body +='<td>';
+                    table_body += '${profile.firstName}';
+                    table_body +='</td>';
+                    
+                    table_body +='<td>';
+                    table_body +='${profile.lastName}';
+                    
+                    table_body +='</td>';
+                    
+                    table_body +='<td>';
+                    table_body += '<button onclick="viewProfile(${profile.profileid})">View Details</button>';
+                    table_body +='</td>'
+                    
+                    table_body +='</td>';
+                    
+                    table_body+='</tr>';
+              
+            #{/list}
+            
+            table_body+='</table>';
+            $('#tableDiv').html(table_body);
+            });
+        
+        
+        
+        function viewProfile(id){
+        	
+        	$("#data").empty();
+        	var ajaxReq = $.ajax('/viewProfile?profileid='+id, {
+        		dataType: 'json',
+        		timeout: 500
+        	});
+
+        	ajaxReq.done(function (data, status, jqXhr) {
+        		$('p').append("Name : "+data.firstName + '  ' + data.lastName+"<br/>");
+        		$('p').append("Date Of Birth : "+data.dob+"<br/>" );
+        		$('p').append("Address Line 1 : "+data.address1 + '<br/>');
+        		$('p').append("Address Line 2 : "+data.address2 + '<br/>');
+        		
+        		
+        		data.catergory = data.catergory.replace('[', '');
+        		data.catergory = data.catergory.replace(']', '');
+        		var catg = data.catergory.split(',');
+        		
+        		var i=0;
+        		$.each(data.phoneNum, function(index,value) {
+        			catgry = "Not Specified";
+        			if(catg[i].trim() != null && catg[i].trim() != '' ){
+        				catgry=catg[i];
+        			}
+        			$('p').append("Phone Number: "+value+ '  Category: '+catgry+'<br/>');
+        			i++;
+        		});
+        		
+
+        	})
+
+        	ajaxReq.fail(function (jqXhr, textStatus, errorMessage) {
+        		$('p').append('Error: ' + errorMessage);
+        	})
+        }
+        
+       
+        
+    </script>
+    
+    <link rel="stylesheet" type="text/css" href="/public/resources/css/nav.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+</head>
+<body>
+
+<ul>
+	<li><a href="/home" class="active">Home</a></li>
+	<li><a href="/createContact" >Create New Contact</a></li>
+	<li><a href="/logout">LogOut</a></li>
+
+</ul>
+
+
+<div style="margin-top: 50px; margin-left: 250px">
+
+    <div id="tableDiv" style="margin-top: 40px">
+       No Contacts added yet 
+    </div>
+        <p id="data"></p>
+</div>
+</body>
+

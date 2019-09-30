@@ -1,0 +1,15 @@
+{
+	"firstName" : "${profile.firstName}",
+	"lastName":	"${profile.lastName}",
+	"email":"${profile.email}",
+	"dob":"${profile.dob}", 
+	#{if profile.address != null}
+	"address1": "${profile.address.addrressLine1}",
+	"address2": "${profile.address.addrressLine2}",
+	"city": "${profile.address.city}",
+	"state" : "${profile.address.state}",
+	"country": "${profile.address.country}", 
+	#{/if}
+	"phoneNum" : ${phNoList},
+	"catergory": "${category}"
+}

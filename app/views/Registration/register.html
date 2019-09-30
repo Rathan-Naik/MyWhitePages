@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register </title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+	$(document).ready(function() { 
+	    $('#register').click(function() {
+	 
+	        $(".error").hide();
+	        var hasError = false;
+	        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+	 
+	        var emailaddressVal = $("#Email").val();
+	        if(emailaddressVal == '') {
+	            $("#EmailErr").text('Please enter your email address');
+	            hasError = true;
+	        }
+	        else if(!emailReg.test(emailaddressVal)) {
+	            $("#EmailErr").text('Enter a valid email address.');
+	            hasError = true;
+	        }
+	        
+	        if(hasError == true) 
+	        { $("#EmailErr").css('color', 'red'); return false; }
+	        else {
+	        	 $("#EmailErr").text('Email');
+	        	 $("#EmailErr").css('color', 'black');
+	        	 $("#EmailErr").css("font-weight","Bold");
+	        }
+	        
+	        /* Validate Password from here */
+	        var psw = $("#psw").val();
+	        var psw_repeat = $("#psw-repeat").val();
+	        
+	        if(psw===psw_repeat){
+	        	$("#psw-repeatErr").text('Confirm Password');
+	        	 $("#psw-repeatErr").css('color', 'black');
+	        	 $("#psw-repeatErr").css("font-weight","Bold");
+	        } else {
+	        	
+	        	$("#psw-repeatErr").text('Passwords do not match.');
+	        	$("#psw-repeatErr").css('color', 'red');
+	        	return false;
+	        }
+	        
+	    });
+	});
+	
+</script>
+
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+</style>
+
+<head>
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="icon" type="image/png" href="/public/resources/images/icons/favicon.ico"/>
+
+	<link rel="stylesheet" type="text/css" href="/public/resources/vendor/bootstrap/css/bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="/public/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="/public/resources/vendor/animate/animate.css">
+	
+	<link rel="stylesheet" type="text/css" href="/public/resources/vendor/css-hamburgers/hamburgers.min.css">
+
+	<link rel="stylesheet" type="text/css" href="/public/resources/vendor/select2/select2.min.css">
+
+	<link rel="stylesheet" type="text/css" href="/public/resources/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/public/resources/css/main.css">
+
+</head>
+<body>
+
+	
+	<div class="limiter">
+		
+		<div class="container-login100">
+				
+			<div class="wrap-login100">
+				<h1 style="margin-top:-100px; text-align :text-center; margin-left: 60px"> Create MyWhitePages Account</h1>
+				
+				<span id="errorinfo">${ErrorInfo}</span> 
+
+
+				<form  action="@{Registration.register()}" method="POST">
+				  <div class="container">
+				    <p>Please fill in this form to create an account.</p>
+				    <hr>
+
+				    <label for="email"><b>First Name</b></label>
+				    <input type="text" placeholder="Firstname" name="fname" required>
+
+				    <label for="psw"><b>Last Name</b></label>
+				    <input type="text" placeholder="Lastname" name="lname">
+				    
+				    <label for="email" id="EmailErr"><b>Email</b></label>
+				    <input type="text" placeholder="Enter Email" name="email" id="Email" required>
+
+				    <label for="psw"><b>Password</b></label>
+				    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+				    <label for="psw-repeat" id="psw-repeatErr"><b>Confirm Password</b></label>
+				    <input type="password" placeholder="Repeat Password" name="psw-repeat"  id="psw-repeat"required>
+				    <hr>
+				    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+				    <button type="submit" class="registerbtn" id="register">Register</button>
+				  </div>
+				  
+				  <div class="container signin">
+				    <p>Already have an account? <a href="/login">Sign in</a>.</p>
+				  </div>
+				</form>
+
+				</body>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+	<script src="/public/resources/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/public/resources/vendor/bootstrap/js/popper.js"></script>
+	<script src="/public/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/public/resources/vendor/select2/select2.min.js"></script>
+	<script src="/public/resources/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+	<script src="/public/resources/js/main.js"></script>
+
+</body>
+</html>

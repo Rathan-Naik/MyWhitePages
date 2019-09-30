@@ -1,0 +1,157 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register </title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		var max_fields      = 10; //maximum input boxes allowed
+		var wrapper   		= "#addanother";
+		var add_button      = "#addanother";
+		
+		
+		var x = 1; //initlal text box count
+		$(add_button).click(function(e){ 
+			
+			e.preventDefault();
+			if(x < max_fields){ //max input box allowed
+				x++; //text box increment
+				$(wrapper).before('<br/><label for="phNo"><b>Phone Number '+x+'</b> </label><input type="text" placeholder="Phone Number" name="phNo" id="phNo">  <label for="phNo"><b>Category</b></label><input type="text" placeholder="Category" name="catg" id="catg"><br/>'); 
+
+			}
+		});
+		
+		$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+			e.preventDefault(); $(this).parent('div').remove(); x--;
+		})
+	});
+
+	$(document).ready(function() { 
+
+	    $('#register').click(function() {
+	 
+	        $(".error").hide();
+	        var hasError = false;
+	        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+	 
+	        var emailaddressVal = $("#Email").val();
+	        if(emailaddressVal == '') {
+	            $("#EmailErr").text('Please enter your email address');
+	            hasError = false;
+	        }
+	        else if(!emailReg.test(emailaddressVal)) {
+	            $("#EmailErr").text('Enter a valid email address.');
+	            hasError = true;
+	        }
+	        
+	        if(hasError == true) 
+	        { $("#EmailErr").css('color', 'red'); return false; }
+	        else {
+	        	 $("#EmailErr").text('Email');
+	        	 $("#EmailErr").css('color', 'black');
+	        	 $("#EmailErr").css("font-weight","Bold");
+	        }
+	        
+	        /* Validate Password from here */
+	        var psw = $("#psw").val();
+	        var psw_repeat = $("#psw-repeat").val();
+	        
+	        alert(psw+" "+psw_repeat);
+	        if(psw===psw_repeat){
+	        	alert("True");
+	        	$("#psw-repeatErr").text('Confirm Password');
+	        	 $("#psw-repeatErr").css('color', 'black');
+	        	 $("#psw-repeatErr").css("font-weight","Bold");
+	        } else {
+	        	
+	        	$("#psw-repeatErr").text('Passwords do not match.');
+	        	$("#psw-repeatErr").css('color', 'red');
+	        	return false;
+	        }
+	        
+	    });
+	});
+	
+</script>
+<link rel="stylesheet" type="text/css" href="/public/resources/css/nav.css">
+</head>
+<body>
+
+</head>
+<body>
+
+
+<ul>
+  <li><a href="/home">Home</a></li>
+  <li><a href="/createContact" class="active">Create New Contact</a></li>
+  <li><a href="/logout">LogOut</a></li>
+</ul>
+
+
+<form action="@{ContactsController.createContact()}" method="POST">
+  <div class="container">
+    <h1>create a new Contact.</h1>
+    <p>Please fill in this form to create a new Contact.</p>
+    <hr>  <br/>
+
+    <label for="email"><b>First Name</b></label>
+    <input type="text" placeholder="Firstname" name="fname" required>
+    <br/>  <br/>
+    
+    <label for="psw"><b>Last Name</b></label>
+    <input type="text" placeholder="Lastname" name="lname">
+    <br/>  <br/>
+    
+    <label for="email" id="EmailErr"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="Email" required>
+    <br/>  <br/>
+    
+    <label for="addr1"><b>Address Line 1</b></label>
+    <input type="text" placeholder="Address Line 1" name="addr1" required>
+    <br/>  <br/>
+    
+    <label for="addr2"><b>Address Line 2</b></label>
+    <input type="text" placeholder="Address Line 2" name="addr2">
+    
+    <br/>  <br/>
+    
+    <label for="city"><b>City</b></label>
+    <input type="text" placeholder="city" name="city">
+    <br/>  <br/>
+    
+    <label for="state"><b>state</b></label>
+    <input type="text" placeholder="state" name="state">
+    <br/>  <br/>
+    
+    <label for="country"><b>Country</b></label>
+    <input type="text" placeholder="country" name="country">
+    <br/>  <br/>
+    
+    <br/><br/>
+    <label for="phNo"><b>Phone Number 1</b></label>
+    <input type="text" placeholder="Phone Number" name="phNo" id="phNo">
+    <label for="phNo"><b>Category</b></label>
+    <input type="text" placeholder="Category" name="catg" id="catg">
+    <br/>
+    <button class="addanother" id="addanother">AddAnother</button>
+    <br/>
+    
+    <br/>
+
+    <label for="dob"><b>Date of Birth</b></label>
+    <input type="date" placeholder="Date of Birth" name="dob"  id="dob"> <br/>
+    <br/>  <br/>
+    <label for="wish"><b>Wish prior to (hours)</b></label>
+    <input type="text" placeholder="Wish prior to (hours)" name="wish"  id="wish">
+    
+    <br/>  <br/>
+    <button type="submit" class="registerbtn" id="create">Create Contact</button>
+  </div>
+
+</form>
+
+</body>
+</html>
