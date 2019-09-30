@@ -11,7 +11,6 @@ import play.jobs.*;
 public class ShceduledTask extends Job {
 
 	public void doJob() {
-
 		List<UserProfile> users = DBConnection.fetchBirthdateProfiles();
 
 		for(UserProfile user: users){
@@ -22,4 +21,5 @@ public class ShceduledTask extends Job {
 			}
 		}
 	}
+	
 }

@@ -52,7 +52,7 @@ public class UserProfile {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
+
 	public Timestamp getLastWishTime() {
 		return lastWishTime;
 	}
@@ -60,7 +60,6 @@ public class UserProfile {
 	public void setLastWishTime(Timestamp lastWishTime) {
 		this.lastWishTime = lastWishTime;
 	}
-
 
 	public int getOwnerid() {
 		return ownerid;
@@ -70,21 +69,17 @@ public class UserProfile {
 		this.ownerid = ownerid;
 	}
 
-	
-	private String firstName; 
-	private String lastName; 
+	private String firstName;
+	private String lastName;
 	private String email;
-	private Date dob ; 
+	private Date dob;
 	private int wishPrior;
 	private Timestamp lastWishTime;
 	private int ownerid;
 	private Address address;
 
-
-
 	private int profileid;
-	
-	
+
 	public UserProfile(String firstName, String lastName, String email, Date dob, int wishPrior, Address address) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -92,16 +87,17 @@ public class UserProfile {
 		this.dob = dob;
 		this.wishPrior = wishPrior;
 		this.address = address;
-		
+
 	}
-	
-	public UserProfile(){
-		
+
+	public UserProfile() {
+
 	}
 
 	public void setProfileid(int int1) {
 		this.profileid = int1;
 	}
+
 	public int getProfileid() {
 		return profileid;
 	}
