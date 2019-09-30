@@ -25,7 +25,7 @@ public class Application extends Controller {
     
     public static void create(){
 		if(!SessionController.isLoggedIn(session)){
-			renderArgs.put("ErrorInfo", "Please Login");
+			renderArgs.put("msg", "Please Login");
 			render("main.html");
 		}
     	render("CreateContact/createcontact.html");
@@ -33,7 +33,7 @@ public class Application extends Controller {
     
     public static void viewContacts(){
 		if(!SessionController.isLoggedIn(session)){
-			renderArgs.put("ErrorInfo", "Please Login");
+			renderArgs.put("msg", "Please Login");
 			render("main.html");
 		}
     	render("ViewContacts/viewContacts.html");
@@ -41,7 +41,7 @@ public class Application extends Controller {
     
     public static void homePage(){
 		if(!SessionController.isLoggedIn(session)){
-			renderArgs.put("ErrorInfo", "Please Login");
+			renderArgs.put("msg", "Please Login");
 			render("main.html");
 		}
     	render("Registration/registered.html");

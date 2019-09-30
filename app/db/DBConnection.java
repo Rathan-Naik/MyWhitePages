@@ -89,9 +89,10 @@ public class DBConnection {
 
 			ResultSet rs = pstmt.executeQuery();
 
-			rs.next();
-			user = new User(rs.getInt("userid"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("password"));
-
+			if(rs.next())
+			{
+				user = new User(rs.getInt("userid"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("password"));
+			}
 
 			rs.close();
 		}catch(SQLException se){

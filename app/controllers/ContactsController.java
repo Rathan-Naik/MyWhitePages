@@ -32,12 +32,16 @@ public class ContactsController extends Controller {
 		
 		int userId = Integer.parseInt(session.get("id"));
 
+		
 		String fname = params.get("fname");
 		String lName = params.get("lname");
 		String email = params.get("email");	
 		Date dob = Date.valueOf(params.get("dob")); 
 
-		int wishPrior = Integer.parseInt(params.get("wish"));
+		int wishPrior=0;
+		
+		if(params.get("wish")!=null && !params.get("wish").trim().isEmpty())
+		wishPrior = Integer.parseInt(params.get("wish"));
 
 		String addr1 = params.get("addr1");
 		String addr2 = params.get("addr2");

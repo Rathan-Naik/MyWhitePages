@@ -35,9 +35,13 @@
 					<img src="/public/resources/images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="@{LogInController.login()}">
+				
+				<form class="login100-form validate-form" action="@{LogInController.login()}" method="POST">
 					<span class="login100-form-title">
 						Member Login
+					</span>
+					<span style="color:red;">
+						${msg}
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">

@@ -50,12 +50,16 @@
         	});
 
         	ajaxReq.done(function (data, status, jqXhr) {
+        		$('p').append("<h3>User Info </h3>");
         		$('p').append("Name : "+data.firstName + '  ' + data.lastName+"<br/>");
         		$('p').append("Date Of Birth : "+data.dob+"<br/>" );
         		$('p').append("Address Line 1 : "+data.address1 + '<br/>');
         		$('p').append("Address Line 2 : "+data.address2 + '<br/>');
+        		$('p').append("City : "+data.city + '<br/>');
+        		$('p').append("State : "+data.state + '<br/>');
+        		$('p').append("Country : "+data.country + '<br/>');
         		
-        		
+        		$('p').append("<br/><h3>Contact info <h3>");
         		data.catergory = data.catergory.replace('[', '');
         		data.catergory = data.catergory.replace(']', '');
         		var catg = data.catergory.split(',');
@@ -66,7 +70,7 @@
         			if(catg[i].trim() != null && catg[i].trim() != '' ){
         				catgry=catg[i];
         			}
-        			$('p').append("Phone Number: "+value+ '  Category: '+catgry+'<br/>');
+        			$('p').append("Phone Number: "+value+ '<br/>  Category: '+catgry+'<br/><br/>');
         			i++;
         		});
         		
@@ -85,6 +89,20 @@
     <link rel="stylesheet" type="text/css" href="/public/resources/css/nav.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     
+    <style>
+    	#tableDiv {
+    	  width: 100px;
+    	  height: 100px;
+    	  margin-right: 10px;
+    	  float: left;
+    	}
+    
+	#infodiv {
+		float: left;
+	  margin-left: 250px;
+	}
+</style>
+    
 </head>
 <body>
 
@@ -101,7 +119,9 @@
     <div id="tableDiv" style="margin-top: 40px">
        No Contacts added yet 
     </div>
+       <div id="infodiv">
         <p id="data"></p>
+        </div>
 </div>
 </body>
 

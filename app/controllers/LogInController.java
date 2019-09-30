@@ -29,19 +29,18 @@ public class LogInController extends Controller {
 		String email = params.get("email");	
 
 		user = DBConnection.getUser(email);
-		
-		if(user!=null){
+		if(user==null){
+			renderArgs.put("msg","Invalid Credentials");
+			render("main.html");
+		}else {
 			if( MD5Util.doPasswordsMatch(password, user.getPassword())){
-				Logger.info("Pass");
 				session.put("id", user.getUserId());
 			}
 		}
 		
 		
-		
 		session.put("id", user.getUserId());
-		
-		Logger.info("LOl");
+		Logger.info("");
 
 
 		renderArgs.put("User", user);
