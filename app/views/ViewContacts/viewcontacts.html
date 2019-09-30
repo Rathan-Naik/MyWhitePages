@@ -8,7 +8,7 @@
     <script >
     	#{if (profiles!=0)}
         $(document).ready(function(){
-              var table_body = '<table border="1"><th style="padding-left:15px;padding-right:15px;"> FirstName </th><th style="padding-left:15px;padding-right:15px;"> LastName </th></tr>';
+              var table_body = '<table id="contactstable" border="1"><th style="padding-left:15px;padding-right:15px;"> FirstName </th><th style="padding-left:15px;padding-right:15px;"> LastName </th></tr>';
               #{list items:profiles, as:'profile' }
 
               		table_body+='<tr id="${profile.profileid}">';
@@ -55,6 +55,11 @@
         		alert("Delete Successfull");
         		$("#infodiv").css("border","none");
         		$('#'+id).remove();
+        		
+        		alert($("#contactstable tr").length);
+        		if($("#contactstable tr").length == 1){
+        			$('#tableDiv').html("No Contacts Added Yet");
+        		}
         	})
 
         	ajaxReq.fail(function (jqXhr, textStatus, errorMessage) {
@@ -113,8 +118,8 @@
     
     <style>
     	#tableDiv {
-    	  width: 100px;
-    	  height: 100px;
+    	  width: 200px;
+    	  height: 200px;
     	  margin-right: 10px;
     	  float: left;
     	}
