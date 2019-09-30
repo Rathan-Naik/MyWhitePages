@@ -19,7 +19,6 @@ public class Application extends Controller {
     }
     
     public static void register(){
-		
     	render("Registration/register.html");
     }
     
