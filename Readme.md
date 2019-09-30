@@ -1,6 +1,6 @@
 <h1> MyWhitePages </h1>
 Website to store contacts.
-Just like WhitePages, just for personal use.
+Just like WhitePages, for personal use.
 
 
 <h1> ER Diagram for DB </h1>
