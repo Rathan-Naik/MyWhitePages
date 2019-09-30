@@ -1,5 +1,9 @@
-<h1> ER Diagram for DB </h1>
+<h1> MyWhitePages </h1>
+Website to store contacts.
+Just like WhitePages, just for personal use.
 
+
+<h1> ER Diagram for DB </h1>
 ![alt text](https://raw.githubusercontent.com/Rathan-Naik/mywhitepages/master/ERD.png)
 
 
