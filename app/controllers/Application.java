@@ -11,6 +11,7 @@ import com.mywhitepages.util.SessionController;
 public class Application extends Controller {
 
     public static void index() {
+    	Logger.info(request.remoteAddress+"has visited home page");
         render();
     }
     
