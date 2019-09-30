@@ -10,7 +10,7 @@
 <li> Front End : HTML/CSS, JQUERY</li>
   
  <h2> Hosting Details </h1>
- <li> Platform : Google Cloud Platform </li>
+ <li> Cloud Service : Google Cloud Platform </li>
  <li> Operating System : CentOS 6 </li>
  <li> Home Page Link : http://35.209.142.153:9000 </li>
  
