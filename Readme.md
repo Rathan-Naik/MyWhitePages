@@ -9,4 +9,9 @@
 <li> Play Framework Version : 1.2.4</li>
 <li> Front End : HTML/CSS, JQUERY</li>
   
+ <h2> Hosting Details </h1>
+ <li> Platform : Google Cloud Platform </li>
+ <li> OS : CentOS 6 </li>
+ <ii> Access Link : http://35.209.142.153:9000 </li>
+ 
 
