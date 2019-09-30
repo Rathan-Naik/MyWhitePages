@@ -11,7 +11,7 @@
   
  <h2> Hosting Details </h1>
  <li> Platform : Google Cloud Platform </li>
- <li> OS : CentOS 6 </li>
- <ii> Access Link : http://35.209.142.153:9000 </li>
+ <li> Operating System : CentOS 6 </li>
+ <li> Home Page Link : http://35.209.142.153:9000 </li>
  
 
