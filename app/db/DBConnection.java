@@ -35,7 +35,7 @@ public class DBConnection {
 		} 
 		catch (Exception e) 
 		{
-			e.printStackTrace();
+			Logger.logInfo("Failed to Establis connection with DB");
 		}
 		return con; 
 	}
