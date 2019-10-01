@@ -32,8 +32,6 @@ public class ContactsController extends Controller {
 	 *
 	 */
 	public static void createContact() {
-
-		Logger.info(request.remoteAddress+" is creating a new account");
 		
 		if(!SessionController.isLoggedIn(session)){
 			renderArgs.put("ErrorInfo", "Please Login");
@@ -55,6 +53,7 @@ public class ContactsController extends Controller {
 		String fname = params.get("fname");
 		String lName = params.get("lname");
 		String email = params.get("email");	
+		Logger.info(request.remoteAddress+" is creating a new profile-"+fname+" "+lName);
 		
 		Date dob = null;
 		try{
@@ -127,7 +126,7 @@ public class ContactsController extends Controller {
 	 * @throws SQLException the SQL exception
 	 */
 	public static void viewContacts() throws SQLException{
-		Logger.info(request.remoteAddress+" is requested to view his contacts");
+		Logger.info(request.remoteAddress+" has requested to view his contacts");
 
 		if(!SessionController.isLoggedIn(session)){
 			renderArgs.put("ErrorInfo", "Please Login");
