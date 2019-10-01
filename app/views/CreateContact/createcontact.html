@@ -16,10 +16,10 @@
 			e.preventDefault();
 			if(x < max_fields){ //max input box allowed
 				x++; //text box increment
-				$(wrapper).before('<br/><label for="phNo"><b>Phone Number</b>'+x
-					+'</label><input type="text" placeholder="Phone Number" name="phNo" id="phNo"> </input>'
-					+'<label><b>Category</b></label> '
-					+'<select name="catg" id="catg"> '
+				$(wrapper).before('<label for="phNo"><b>Phone Number '+x+' </b> ' 
+					+'</label><input type="tel" placeholder="Phone Number" name="phNo" id="phNo"> </input>'
+					+'<label id="catg"><b>Category</b></label> '
+					+'<select  style="width: 10%;" name="catg" id="catg"> '
 						+'<option value="Business">Business</option>'
 					    +'<option value="Home">Home</option>'
 					    +'<option value="Mobile">Mobile</option>'
@@ -82,6 +82,43 @@
 	
 </script>
 <link rel="stylesheet" type="text/css" href="/public/resources/css/nav.css">
+<style>
+input[type=text], select, textarea {
+	  width: 30%;
+	  padding: 12px;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  box-sizing: border-box;
+	  margin-top: 6px;
+	  margin-bottom: 16px;
+	  resize: vertical;
+	}
+
+	input[type=submit] {
+	  background-color: #4CAF50;
+	  color: white;
+	  padding: 12px 20px;
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	}
+
+	input[type=submit]:hover {
+	  background-color: #45a049;
+	}
+
+	.container {
+	  width: 60%;
+	  align:center;
+	  border-radius: 5px;
+	  background-color: #f2f2f2;
+	  padding: 20px;
+	}
+	
+	#catg{
+		margin-left:30px;
+	}
+</style>
 </head>
 <body>
 
@@ -89,7 +126,7 @@
 <body>
 
 
-<ul>
+<ul style="width:63%;">
   <li><a href="/home">Home</a></li>
   <li><a href="/createContact" class="active">Create New Contact</a></li>
   <li><a href="/logout">LogOut</a></li>
@@ -104,35 +141,34 @@
 
     <label for="email"><b>First Name</b></label>
     <input type="text" placeholder="Firstname" name="fname" required>
-    <br/>  <br/>
-    
-    <label for="psw"><b>Last Name</b></label>
+
+    <label for="psw" style="margin-left:30px"><b>Last Name</b></label>
     <input type="text" placeholder="Lastname" name="lname">
     <br/>  <br/>
     
     <label for="email" id="EmailErr"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="Email" required>
+    <input type="text" style="margin-left:30px" placeholder="Enter Email" name="email" id="Email" required>
+    
+    <label for="dob" style="margin-left:30px"><b>Date of Birth</b></label>
+    <input type="date"  style='height:30px;' placeholder="Date of Birth" name="dob"  id="dob"> 
     <br/>  <br/>
     
     <label for="addr1"><b>Address Line 1</b></label>
-    <input type="text" placeholder="Address Line 1" name="addr1" required>
-    <br/>  <br/>
+    <input type="text" style='width:30%;' placeholder="Address Line 1" name="addr1" required>
     
-    <label for="addr2"><b>Address Line 2</b></label>
-    <input type="text" placeholder="Address Line 2" name="addr2">
+    <label for="addr2" style="margin-left:30px"><b>Address Line 2</b></label>
+    <input type="text" style='width:30%;' placeholder="Address Line 2" name="addr2">
     
-    <br/>  <br/>
+    <br/>
+    <label for="city" ><b>City</b></label>
+    <input type="text" style='width:20%;margin-left:15px;' placeholder="city" name="city">
     
-    <label for="city"><b>City</b></label>
-    <input type="text" placeholder="city" name="city">
-    <br/>  <br/>
+    <label for="state"  style='margin-left:30px;'><b>State</b></label>
+    <input type="text"  style='width:20%; margin-left:15px;' placeholder="state" name="state">
+
     
-    <label for="state"><b>State</b></label>
-    <input type="text" placeholder="state" name="state">
-    <br/>  <br/>
-    
-    <label for="country"><b>Country</b></label>
-    <select placeholder="country" name="country">
+    <label for="country" style="margin-left:30px "><b>Country</b></label>
+    <select style="width:20%;height:30px;margin-left:15px;" placeholder="country" name="country">
 	<option value="AF">Afghanistan</option>
 	<option value="AX">Åland Islands</option>
 	<option value="AL">Albania</option>
@@ -385,11 +421,13 @@
 </select>
     <br/>  <br/>
     
+    <hr/>
+    
     <br/><br/>
     <label for="phNo"><b>Phone Number 1</b></label>
     <input type="tel" placeholder="Phone Number" name="phNo" pattern="[0-9]{10,15}" required>
-    <label for="phNo"><b>Category</b></label>
-	 <select name="catg" id="catg">
+    <label for="phNo"  id="catg" ><b>Category</b></label>
+	 <select name="catg" id="catg"  style="width: 10%;">
 	    <option value="Business">Business</option>
 	    <option value="Home">Home</option>
 	    <option value="Mobile">Mobile</option>
@@ -401,10 +439,9 @@
     <br/>
     
     <br/>
+    
+    <hr/>
 
-    <label for="dob"><b>Date of Birth</b></label>
-    <input type="date" placeholder="Date of Birth" name="dob"  id="dob"> <br/>
-    <br/>  <br/>
     <label for="wish"><b>Wish prior to (hours)</b></label>
     <input type="text" placeholder="Wish prior to (hours)" name="wish"  id="wish">
     
