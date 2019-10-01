@@ -1,8 +1,11 @@
 package com.mywhitepages.storagemanager;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import com.jamonapi.utils.Logger;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
@@ -19,9 +22,28 @@ import models.UserProfile;
 public class DBConnection {
 
 	private static final String MYSQL_JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private final static String DBURL = "jdbc:mysql://localhost/mywhitepages?characterEncoding=latin1";
-	private final static String DB_USERNAME = "mywhitepagesapp";
-	private final static String DB_PASSWORD = "mywhitepagesapp";
+	private static String DBURL ; 
+	private static String DB_USERNAME; 
+	private static String DB_PASSWORD;
+	
+	/**
+	 * Read DB config from Secure file stored in Server.
+	 * Small layer of protection.
+	 *
+	 * @return the connection object
+	 */
+	private static void readDBConfig(){
+		Properties properties = new Properties();
+		try {
+		  properties.load(new FileInputStream("/keys/securestore/database/db.config"));
+		  DBURL = (String) properties.get("db_host_url");
+		  DB_USERNAME = (String) properties.get("db_username");
+		  DB_PASSWORD = (String) properties.get("db_password");
+		} catch (IOException e) {
+			Logger.log("Problem in reading DB Config");
+		  
+		}
+	}
 
 	/**
 	 * Creates a new DB connection.
@@ -29,6 +51,9 @@ public class DBConnection {
 	 * @return the connection object
 	 */
 	private static Connection createConnection() {
+		if(DBURL==null){ 
+			readDBConfig();
+		}
 		Connection connection = null;
 		try {
 			try {
@@ -38,7 +63,7 @@ public class DBConnection {
 			}
 			connection = DriverManager.getConnection(DBURL, DB_USERNAME, DB_PASSWORD);
 		} catch (Exception e) {
-			Logger.logInfo("Failed to Establish connection with DB");
+			Logger.logInfo("Failed to Establish connection with DB"+e);
 		}
 		return connection;
 	}
