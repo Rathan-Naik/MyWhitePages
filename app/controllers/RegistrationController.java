@@ -32,6 +32,8 @@ public class RegistrationController extends Controller {
 
 		try {
 			DBConnection.registerUser(user);
+			Logger.info(request.remoteAddress+" has created a new account with email-"+email);
+
 		} catch (UserRegisterdException e) {
 			renderArgs.put("ErrorInfo", " Email already Registered");
 			render("Registration/register.html");

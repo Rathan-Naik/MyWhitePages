@@ -33,6 +33,8 @@ public class ContactsController extends Controller {
 	 */
 	public static void createContact() {
 
+		Logger.info(request.remoteAddress+" is creating a new account");
+		
 		if(!SessionController.isLoggedIn(session)){
 			renderArgs.put("ErrorInfo", "Please Login");
 			render("main.html");
@@ -125,6 +127,7 @@ public class ContactsController extends Controller {
 	 * @throws SQLException the SQL exception
 	 */
 	public static void viewContacts() throws SQLException{
+		Logger.info(request.remoteAddress+" is requested to view his contacts");
 
 		if(!SessionController.isLoggedIn(session)){
 			renderArgs.put("ErrorInfo", "Please Login");
@@ -158,6 +161,7 @@ public class ContactsController extends Controller {
 
 		int profileId = Integer.parseInt(params.get("profileid"));
 		UserProfile profile = DBConnection.fetchProfile(profileId) ;
+		Logger.info(request.remoteAddress+" has requested to view profile profileid-"+profileId);
 
 		List<PhoneNumber> phNoList = DBConnection.fetchPhoneNumbers(profileId);
 
@@ -193,6 +197,8 @@ public class ContactsController extends Controller {
 		currentUserId=1;
 
 		int profileId = Integer.parseInt(params.get("profileid"));
+		Logger.info(request.remoteAddress+" has requested to delete a profile profileid-"+profileId);
+
 		DBConnection.deleteProfile(profileId);
 
 		render("ViewContacts/deleteprofile.html");

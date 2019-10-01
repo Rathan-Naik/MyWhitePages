@@ -43,6 +43,8 @@ public class LogInController extends Controller {
 		}else {
 			if( MD5Util.doPasswordsMatch(password, user.getPassword())){
 				session.put("id", user.getUserId());
+				Logger.info(request.remoteAddress+" has sucessfully loggedin with email-"+email);
+
 			}
 		}
 
