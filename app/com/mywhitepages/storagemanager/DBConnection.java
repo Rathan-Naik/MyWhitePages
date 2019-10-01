@@ -415,7 +415,7 @@ public class DBConnection {
 		String SQL = "SELECT * from contactsProfile "
 				+ "where DATE_FORMAT(birthdate, '%m-%d') = DATE_FORMAT(CURDATE(), '%m-%d') "
 				+ "and DATE_FORMAT(DATE_SUB(birthdate, INTERVAL wishpriorhours HOUR), '%Y-%m-%d %H:%i') < DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i')"
-				+ "and DATE_FORMAT(lastswishtime,'%Y-%m-%d')  !=DATE_FORMAT(CURDATE(), '%Y-%m-%d')";
+				+ "and DATE_FORMAT(lastwishtime,'%Y-%m-%d')  !=DATE_FORMAT(CURDATE(), '%Y-%m-%d')";
 
 		Connection conn = createConnection();
 		PreparedStatement pstmt = null;
